@@ -1,0 +1,163 @@
+Ejecutable como documento HTML5
+    con autor allnulled
+    con nombre index
+    con versión 1
+<head>
+    <title>🌐 EJS Playground</title>
+    <meta charset="utf8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="lib/codemirror/codemirror.css" />
+    <link rel="stylesheet" type="text/css" href="lib/win7/win7.scoped.2.css" />
+    <script src="lib/calo/calo.js"></script>
+    <script src="lib/codemirror/codemirror.js"></script>
+    <script src="lib/ejs/ejs.js"></script>
+    <style>
+      @font-face {
+        font-family: Roboto;
+        src: url("./lib/fonts/Roboto/Roboto-Regular.ttf");
+      }
+      html {
+        background-color: #444;
+        font-family: Roboto;
+      }
+      h5 {
+        background-color: #333;
+        color: white;
+        margin: 0;
+        padding: 12px;
+        font-size: 12px;
+      }
+      .width_100 {
+        width: 100%;
+      }
+      #error {
+        padding: 12px;
+        background-color: red;
+        color: white;
+        font-weight: bold;
+      }
+      hr {
+        margin: 0;
+      }
+      .CodeMirror {
+        background-color: #111;
+        color: #FFF;
+        font-size: 10px;
+      }
+      .CodeMirror-gutters {
+        background-color: #111;
+        color: #FFF;
+      }
+      .CodeMirror-cursor {
+        border-left: 1px solid white;
+      }
+    </style>
+</head>
+<body><div id="app"></div></body>.
+
+asigno window.PaginaDeInicio como un componente vue2 con nombre "PaginaDeInicio" con plantilla {
+  <div class="PaginaDeInicio Component">
+    <h5>🌐 EJS Playground. <a href="https://ejs.co/#docs" target="_blank">Visit the EJS docs</a>.</h5>
+    <hr/>
+    <h5>Input EJS template</h5>
+    <div>
+      <textarea ref="codigo_entrada"></textarea>
+    </div>
+    <hr/>
+    <div>
+      <button class="width_100" v-on:click="compilar_codigo">Compilar</button>
+      <div id="error" v-if="error" v-on:click="limpiar_error">
+        <div>Error: {{ error.name }}</div>
+        <div>Mensaje: {{ error.message }}</div>
+        <div>Pila: {{ error.stack }}</div>
+      </div>
+    </div>
+    <hr/>
+    <h5>Output texto</h5>
+    <div>
+      <textarea ref="codigo_salida"></textarea>
+    </div>
+  </div>
+} con lógica {
+  retorno {
+    propiedad props como {
+      propiedad root como {
+        propiedad type como Object.
+        propiedad required como true.
+      }.
+    }.
+    método data donde {
+      retorno {
+        cm_entrada: undefined,
+        cm_salida: undefined,
+        error: undefined
+      }.
+    }.
+    propiedad methods como {
+      método gestionar_error con (error) donde {
+        asigno this.error como error.
+        hago this.$forceUpdate(true).
+      }.
+      método asíncrono compilar_codigo donde {
+        creo entrada como this.cm_entrada.getValue().
+        creo salida como asíncronamente this.$window.ejs.render(entrada, {}, { async: true }).
+        hago this.cm_salida.setValue(salida).
+      } en errores hago this.gestionar_error(error).
+      método limpiar_error donde {
+        asigno this.error como undefined.
+        hago this.$forceUpdate(true).
+      } en errores hago this.gestionar_error(error).
+    }.
+    propiedad watch como {}.
+    propiedad computed como {}.
+    método beforeCreate donde {}.
+    método created donde {}.
+    método beforeMount donde {}.
+    método mounted donde {
+      asigno this.cm_entrada como CodeMirror.fromTextArea(this.$refs.codigo_entrada, {
+        lineNumbers: true
+      }).
+      asigno this.cm_salida como CodeMirror.fromTextArea(this.$refs.codigo_salida, {
+        lineNumbers: true
+      }).
+    }.
+    método beforeUpdate donde {}.
+    método updated donde {}.
+    método beforeUnmount donde {}.
+    método unmounted donde {}.
+    método activated donde {}.
+    método deactivated donde {}.
+  }.
+}.
+
+asigno window.App como una aplicación vue2 con nombre "App" con rutas [{
+  propiedad path como "/".
+  propiedad name como "PaginaDeInicio".
+  propiedad component como PaginaDeInicio.
+  propiedad props como {}.
+}] con traducciones {
+    propiedad es como {}.
+    propiedad en como {}.
+    propiedad ca como {}.
+} con plantilla {
+  <div class="App Component Castelog-app win7">
+    <router-view :root="this"></router-view>
+  </div>
+} con estilos {
+    html {}
+    body {}
+    .Component {}
+    .App {}
+} con lógica {
+  retorno {
+    método data donde {
+      retorno {}.
+    }.
+    propiedad methods como {}.
+    propiedad watch como {}.
+    método beforeMount donde {
+      asigno this.$window como window.
+    }.
+    método mounted donde {}.
+  }.
+} montada en "#app".
