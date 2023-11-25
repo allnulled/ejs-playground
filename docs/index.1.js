@@ -19,7 +19,7 @@ window.PaginaDeInicio = Castelog.metodos.un_componente_vue2("PaginaDeInicio",
  + "      </div>"
  + "    </div>"
  + "    <hr/>"
- + "    <h5>Output texto</h5>"
+ + "    <h5>Output text</h5>"
  + "    <div>"
  + "      <textarea ref=\"codigo_salida\"></textarea>"
  + "    </div>"
